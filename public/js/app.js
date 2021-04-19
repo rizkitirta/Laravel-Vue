@@ -1974,7 +1974,7 @@ var routes = [{
   path: "/about",
   component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }, {
-  path: '/user/:name',
+  path: '/user/:name?',
   component: _pages_User_vue__WEBPACK_IMPORTED_MODULE_5__.default
 }, {
   path: "*",
@@ -37973,7 +37973,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Hello " + _vm._s(_vm.$route.params.name) + ". ")])
+  return _c("div", [
+    _vm.$route.params.name
+      ? _c("section", [
+          _c("h1", [_vm._v("Hello " + _vm._s(_vm.$route.params.name) + ". ")])
+        ])
+      : _c("section", [_c("h1", [_vm._v("Daftar User")])])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
