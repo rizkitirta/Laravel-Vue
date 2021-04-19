@@ -18,7 +18,10 @@
 <body>
 
     <div id="app">
-
+        <h1 v-text="'Hello,' + title"></h1>
+        <example-component></example-component>
+        <header-component></header-component>
+        <footer-component></footer-component>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
