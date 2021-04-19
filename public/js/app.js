@@ -1906,7 +1906,6 @@ var routes = [{
   component: NotFound
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
-  mode: 'history',
   routes: routes
 });
 /**
