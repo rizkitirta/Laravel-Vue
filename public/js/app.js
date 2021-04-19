@@ -1890,8 +1890,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['name']
+  props: ["name"],
+  data: function data() {
+    return {
+      users: [{
+        id: 1,
+        name: "Rizki"
+      }, {
+        id: 2,
+        name: "Alfatan"
+      }, {
+        id: 3,
+        name: "Reza"
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -1995,16 +2012,16 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE
 
 
 var routes = [{
-  name: 'Home',
+  name: "Home",
   path: "/home",
   component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }, {
-  name: 'About',
+  name: "About",
   path: "/about",
   component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }, {
-  name: 'User',
-  path: '/user/:name?',
+  name: "User",
+  path: "/user/:name?",
   component: _pages_User_vue__WEBPACK_IMPORTED_MODULE_5__.default,
   props: true
 }, {
@@ -38026,8 +38043,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.name
-      ? _c("section", [_c("h1", [_vm._v("Hello " + _vm._s(_vm.name) + ". ")])])
-      : _c("section", [_c("h1", [_vm._v("Daftar User")])])
+      ? _c("section", [_c("h1", [_vm._v("Hello " + _vm._s(_vm.name) + ".")])])
+      : _c("section", [
+          _c("h1", [_vm._v("Daftar User")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            _vm._l(_vm.users, function(user) {
+              return _c("li", { key: user }, [_vm._v(_vm._s(user.name))])
+            }),
+            0
+          )
+        ])
   ])
 }
 var staticRenderFns = []
