@@ -1,27 +1,33 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+const { default: VueRouter } = require('vue-router');
 
 require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import Vue from 'vue';
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
+
+require('./pages/Home.vue')
+require('./pages/About.vue')
+
+const routes = [
+    {
+        path: '/home',
+        component: Home
+    },
+    {
+        path: '/about',
+        component: About
+    }
+]
+
+const router = new VueRouter({
+    routes
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,5 +39,6 @@ const app = new Vue({
     el: '#app',
     data: {
         title: 'Laravel Vue'
-    }
+    },
+    router,
 });
