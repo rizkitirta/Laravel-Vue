@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 import Home from "../pages/Home.vue";
 import About from "../pages/About.vue";
 import NotFound from "../pages/NotFound.vue";
+import User from "../pages/User.vue";
 
 const routes = [
     {
@@ -18,6 +19,10 @@ const routes = [
     {
         path: "/about",
         component: About
+    },
+    {
+        path: '/user/:name',
+        component: User
     },
     {
         path: "*",

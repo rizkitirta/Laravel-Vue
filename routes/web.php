@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('/{slug}', function() {
+Route::any('/{slug}/{slug2}', function() {
     return view('latihan1');
 });
