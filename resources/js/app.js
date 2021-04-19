@@ -11,8 +11,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
 
+
 const Home = require('./pages/Home.vue').default
 const About = require('./pages/About.vue').default
+const NotFound = require('./pages/NotFound.vue').default
 
 const routes = [
     {
@@ -22,6 +24,10 @@ const routes = [
     {
         path: '/about',
         component: About
+    },
+    {
+        path: '*',
+        component: NotFound
     }
 ]
 
