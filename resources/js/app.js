@@ -1,18 +1,18 @@
-const { default: VueRouter } = require('vue-router');
 
 require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-import Vue from 'vue';
-
+import Vue from "vue";
+import VueRouter from "vue-router"
+Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
 
-require('./pages/Home.vue')
-require('./pages/About.vue')
+const Home = require('./pages/Home.vue').default
+const About = require('./pages/About.vue').default
 
 const routes = [
     {
@@ -26,6 +26,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 })
 

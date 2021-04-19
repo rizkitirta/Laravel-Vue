@@ -1878,20 +1878,20 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-var _require = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js"),
-    VueRouter = _require["default"];
-
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 
+
+vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('header-component', __webpack_require__(/*! ./components/Header.vue */ "./resources/js/components/Header.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue").default);
 
-__webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue");
+var Home = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue").default;
 
-__webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue");
+var About = __webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue").default;
 
 var routes = [{
   path: '/home',
@@ -1900,7 +1900,8 @@ var routes = [{
   path: '/about',
   component: About
 }];
-var router = new VueRouter({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
+  mode: 'history',
   routes: routes
 });
 /**
@@ -37705,9 +37706,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", [
-      _c("a", { attrs: { href: "" } }, [_vm._v("@copy 2021")])
-    ])
+    return _c("footer", [_c("a", [_vm._v("@copy 2021")])])
   }
 ]
 render._withStripped = true
@@ -37732,20 +37731,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", [
-      _c("a", { attrs: { href: "" } }, [_vm._v("Home")]),
+  return _c(
+    "nav",
+    [
+      _c("router-link", { attrs: { to: "/home" } }, [_vm._v("Home")]),
       _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("About")])
-    ])
-  }
-]
+      _c("router-link", { attrs: { to: "/about" } }, [_vm._v("About")])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37768,7 +37764,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("About")])
+  return _c("h1", [_vm._v("About Page")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37793,7 +37789,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Home")])
+  return _c("h1", [_vm._v("Home Page")])
 }
 var staticRenderFns = []
 render._withStripped = true
