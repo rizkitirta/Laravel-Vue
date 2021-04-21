@@ -38067,7 +38067,7 @@ var render = function() {
           [
             _c("h1", [_vm._v("Hello " + _vm._s(_vm.username) + ".")]),
             _vm._v(" "),
-            _c("router-link", { attrs: { to: { username: "User" } } }, [
+            _c("router-link", { attrs: { to: { name: "User" } } }, [
               _vm._v("back")
             ])
           ],
