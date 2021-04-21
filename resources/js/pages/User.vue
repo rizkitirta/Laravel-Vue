@@ -20,12 +20,14 @@ export default {
     props: ["username"],
     data() {
         return {
-            users: [
-                { id: 1, name: "Rizki" },
-                { id: 2, name: "Alfatan" },
-                { id: 3, name: "Reza" }
-            ]
+            users: []
         };
+    },
+    mounted() {
+        axios.get('api/users').then((response) => {
+            console.log(response)
+            this.users = response.data
+        })
     },
     methods: {
         profile_uri(name){
