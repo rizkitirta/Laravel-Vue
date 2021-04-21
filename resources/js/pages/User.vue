@@ -1,14 +1,15 @@
 <template>
     <div>
-        <section v-if="name">
-            <h1>Hello {{ name }}.</h1>
-            <router-link :to="{name: 'User'}">back</router-link>
+        <section v-if="username">
+            <h1>Hello {{ username }}.</h1>
+            <router-link :to="{username: 'User'}">back</router-link>
         </section>
         <section v-else>
             <h1>Daftar User</h1>
             <ul>
                 <li v-for="user in users">
-                    <router-link :to="profile_uri(user.name)">{{ user.name }}</router-link>
+                    <!-- <router-link :to="profile_uri(user.name)">{{ user.name }}</router-link> -->
+                    <a href="" @click.prevent="lihatUser(user.name)">{{ user.name }}</a>
                 </li>
             </ul>
         </section>
@@ -16,7 +17,7 @@
 </template>
 <script>
 export default {
-    props: ["name"],
+    props: ["username"],
     data() {
         return {
             users: [
@@ -29,6 +30,13 @@ export default {
     methods: {
         profile_uri(name){
            return '/user/' + name.toLowerCase()
+        },
+        lihatUser(name) {
+            // this.$router.push('/user/' + name.toLowerCase())
+            this.$router.push({
+                name: 'User',
+                params: {username: name.toLowerCase()}
+            })
         }
     }
 };

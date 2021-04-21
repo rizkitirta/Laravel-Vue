@@ -1896,8 +1896,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["name"],
+  props: ["username"],
   data: function data() {
     return {
       users: [{
@@ -1915,6 +1916,15 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     profile_uri: function profile_uri(name) {
       return '/user/' + name.toLowerCase();
+    },
+    lihatUser: function lihatUser(name) {
+      // this.$router.push('/user/' + name.toLowerCase())
+      this.$router.push({
+        name: 'User',
+        params: {
+          username: name.toLowerCase()
+        }
+      });
     }
   }
 });
@@ -2029,7 +2039,7 @@ var routes = [{
   component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }, {
   name: "User",
-  path: "/user/:name?",
+  path: "/user/:username?",
   component: _pages_User_vue__WEBPACK_IMPORTED_MODULE_5__.default,
   props: true
 }, {
@@ -38050,13 +38060,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.name
+    _vm.username
       ? _c(
           "section",
           [
-            _c("h1", [_vm._v("Hello " + _vm._s(_vm.name) + ".")]),
+            _c("h1", [_vm._v("Hello " + _vm._s(_vm.username) + ".")]),
             _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "User" } } }, [
+            _c("router-link", { attrs: { to: { username: "User" } } }, [
               _vm._v("back")
             ])
           ],
@@ -38068,17 +38078,21 @@ var render = function() {
           _c(
             "ul",
             _vm._l(_vm.users, function(user) {
-              return _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: _vm.profile_uri(user.name) } },
-                    [_vm._v(_vm._s(user.name))]
-                  )
-                ],
-                1
-              )
+              return _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.lihatUser(user.name)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(user.name))]
+                )
+              ])
             }),
             0
           )
