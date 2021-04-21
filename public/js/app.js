@@ -1893,6 +1893,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["name"],
   data: function data() {
@@ -1908,6 +1911,11 @@ __webpack_require__.r(__webpack_exports__);
         name: "Reza"
       }]
     };
+  },
+  methods: {
+    profile_uri: function profile_uri(name) {
+      return '/user/' + name.toLowerCase();
+    }
   }
 });
 
@@ -38043,14 +38051,34 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.name
-      ? _c("section", [_c("h1", [_vm._v("Hello " + _vm._s(_vm.name) + ".")])])
+      ? _c(
+          "section",
+          [
+            _c("h1", [_vm._v("Hello " + _vm._s(_vm.name) + ".")]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "User" } } }, [
+              _vm._v("back")
+            ])
+          ],
+          1
+        )
       : _c("section", [
           _c("h1", [_vm._v("Daftar User")]),
           _vm._v(" "),
           _c(
             "ul",
             _vm._l(_vm.users, function(user) {
-              return _c("li", { key: user }, [_vm._v(_vm._s(user.name))])
+              return _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: _vm.profile_uri(user.name) } },
+                    [_vm._v(_vm._s(user.name))]
+                  )
+                ],
+                1
+              )
             }),
             0
           )
