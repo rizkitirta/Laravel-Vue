@@ -1907,9 +1907,15 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('api/users').then(function (response) {
-      console.log(response);
-      _this.users = response.data;
+    // axios.get('api/users').then((response) => {
+    //     console.log(response)
+    //     this.users = response.data
+    // })
+    fetch('api/users').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      console.log(data);
+      _this.users = data;
     });
   },
   methods: {

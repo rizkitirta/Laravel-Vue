@@ -24,9 +24,16 @@ export default {
         };
     },
     mounted() {
-        axios.get('api/users').then((response) => {
-            console.log(response)
-            this.users = response.data
+        // axios.get('api/users').then((response) => {
+        //     console.log(response)
+        //     this.users = response.data
+        // })
+
+        fetch('api/users')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            this.users = data
         })
     },
     methods: {
