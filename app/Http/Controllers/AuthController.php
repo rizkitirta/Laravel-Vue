@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')->select('id','name')->get();
 
         return response()->json($users);
     }

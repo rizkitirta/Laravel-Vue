@@ -1898,36 +1898,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["username"],
+  props: ["id"],
   data: function data() {
     return {
       users: []
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    // axios.get('api/users').then((response) => {
-    //     console.log(response)
-    //     this.users = response.data
+    this.getUser(); // fetch('api/users')
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data)
+    //     this.users = data
     // })
-    fetch('api/users').then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      console.log(data);
-      _this.users = data;
-    });
   },
   methods: {
+    getUser: function getUser() {
+      var _this = this;
+
+      axios.get("api/users").then(function (response) {
+        console.log(response);
+        _this.users = response.data;
+
+        if (_this.id) {
+          _this.detailUser = _this.users.filter(function (item) {
+            return item.id = _this.id[0];
+          });
+        }
+      });
+    },
     profile_uri: function profile_uri(name) {
       return '/user/' + name.toLowerCase();
     },
-    lihatUser: function lihatUser(name) {
+    lihatUser: function lihatUser(id) {
       // this.$router.push('/user/' + name.toLowerCase())
       this.$router.push({
-        name: 'User',
+        name: "User",
         params: {
-          username: name.toLowerCase()
+          id: id
         }
       });
     }
@@ -2044,7 +2052,7 @@ var routes = [{
   component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }, {
   name: "User",
-  path: "/user/:username?",
+  path: "/user/:id?",
   component: _pages_User_vue__WEBPACK_IMPORTED_MODULE_5__.default,
   props: true
 }, {
@@ -38066,11 +38074,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.username
+    _vm.id
       ? _c(
           "section",
           [
-            _c("h1", [_vm._v("Hello " + _vm._s(_vm.username) + ".")]),
+            _c("h1", [_vm._v("Hello " + _vm._s(_vm.id) + ".")]),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "User" } } }, [
               _vm._v("back")
@@ -38091,8 +38099,7 @@ var render = function() {
                     attrs: { href: "" },
                     on: {
                       click: function($event) {
-                        $event.preventDefault()
-                        return _vm.lihatUser(user.name)
+                        return _vm.lihatUser(user.id)
                       }
                     }
                   },

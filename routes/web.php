@@ -18,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{any}', function() {
+Route::get('/{any}', function () {
     return view('latihan1');
 });
 
+Route::get('/{any}/{any2}', function () {
+    return view('latihan1');
+});
