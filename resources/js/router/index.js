@@ -10,6 +10,7 @@ import Home from "../pages/Home.vue";
 import About from "../pages/About.vue";
 import NotFound from "../pages/NotFound.vue";
 import User from "../pages/User.vue";
+import Profile from "../pages/Profile.vue";
 
 const routes = [
     {
@@ -24,8 +25,13 @@ const routes = [
     },
     {
         name: "User",
-        path: "/user/:id?",
+        path: "/user",
         component: User,
+    },
+    {
+        name: "Profile",
+        path: "/user/:id",
+        component: Profile,
         props: true
     },
     {
@@ -35,7 +41,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-    linkActiveClass: 'active',
+    linkActiveClass: "active",
     mode: "history",
     routes
 });
