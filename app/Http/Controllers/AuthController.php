@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,15 +10,15 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->select('id', 'name')->get();
+        $users = User::all();
 
         return response()->json($users);
     }
 
     public function show($id)
     {
-        $users = DB::table('users')->where('id',$id)->first();
+        $user = User::find($id);
 
-        return response()->json($users);
+        return response()->json($user);
     }
 }

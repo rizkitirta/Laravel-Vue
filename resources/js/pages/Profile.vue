@@ -2,6 +2,7 @@
     <div>
         <section v-if="id">
             <h1>Hello {{ detailUser.name }}.</h1>
+            <p>Email : {{detailUser.email}}</p>
             <router-link :to="{ name: 'User' }">back</router-link>
         </section>
     </div>
