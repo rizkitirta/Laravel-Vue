@@ -1945,6 +1945,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1952,7 +1961,8 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         email: "",
         password: ""
-      }
+      },
+      errors: {}
     };
   },
   methods: {
@@ -1971,7 +1981,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       })["catch"](function (error) {
-        console.log(error);
+        if (error.response.status == 422) {
+          _this.errors = error.response.data.errors;
+        }
       });
     }
   }
@@ -38518,7 +38530,17 @@ var render = function() {
                 _vm.$set(_vm.form, "name", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.name[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -38543,7 +38565,17 @@ var render = function() {
                 _vm.$set(_vm.form, "email", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.email[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -38568,7 +38600,17 @@ var render = function() {
                 _vm.$set(_vm.form, "password", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.password[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("button", { attrs: { type: "submit" } }, [_vm._v("Register")])
