@@ -1981,8 +1981,8 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this.errors = error.response.data.errors;
+        if (error.response.status) {
+          _this.errors = error.response.data.message;
         }
       });
     }

@@ -56,8 +56,8 @@ export default {
                     }
                 })
                 .catch(error => {
-                    if (error.response.status == 422) {
-                        this.errors = error.response.data.errors
+                    if (error.response.status) {
+                        this.errors = error.response.data.message
                     }
                 });
         }
