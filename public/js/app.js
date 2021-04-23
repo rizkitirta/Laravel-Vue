@@ -1904,9 +1904,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["id"],
   data: function data() {
     return {
-      form: {
+      user: {
         name: "",
         email: ""
       },
@@ -1917,8 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
     handleUpdate: function handleUpdate() {
       var _this = this;
 
-      console.log(this.form);
-      axios.post("/api/users", this.form).then(function (response) {
+      axios.put("/api/users/" + this.id, this.user).then(function (response) {
         if (response.data.status) {
           console.log(response);
 
@@ -1933,7 +1933,20 @@ __webpack_require__.r(__webpack_exports__);
           _this.errors = error.response.data.message;
         }
       });
+    },
+    getUser: function getUser() {
+      var _this2 = this;
+
+      axios.get("/api/users/" + this.id).then(function (response) {
+        _this2.user = {
+          name: response.data.name,
+          email: response.data.email
+        };
+      });
     }
+  },
+  mounted: function mounted() {
+    this.getUser();
   }
 });
 
@@ -1950,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -1996,6 +2010,14 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return false;
       }
+    },
+    handlingEdit: function handlingEdit() {
+      this.$router.push({
+        name: 'Edit',
+        params: {
+          id: this.id
+        }
+      });
     }
   }
 });
@@ -2284,8 +2306,9 @@ var routes = [{
   props: true
 }, {
   name: "Edit",
-  path: "/user/:id",
-  component: _pages_Edit_vue__WEBPACK_IMPORTED_MODULE_8__.default
+  path: "/user/:id/edit",
+  component: _pages_Edit_vue__WEBPACK_IMPORTED_MODULE_8__.default,
+  props: true
 }, {
   path: "*",
   component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_4__.default
@@ -38592,18 +38615,18 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.form.name,
-                expression: "form.name"
+                value: _vm.user.name,
+                expression: "user.name"
               }
             ],
             attrs: { type: "text" },
-            domProps: { value: _vm.form.name },
+            domProps: { value: _vm.user.name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.form, "name", $event.target.value)
+                _vm.$set(_vm.user, "name", $event.target.value)
               }
             }
           }),
@@ -38627,18 +38650,18 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.form.email,
-                expression: "form.email"
+                value: _vm.user.email,
+                expression: "user.email"
               }
             ],
             attrs: { type: "email" },
-            domProps: { value: _vm.form.email },
+            domProps: { value: _vm.user.email },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.form, "email", $event.target.value)
+                _vm.$set(_vm.user, "email", $event.target.value)
               }
             }
           }),
@@ -38755,9 +38778,19 @@ var render = function() {
               [_vm._v("Delete")]
             ),
             _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Edit" } } }, [
-              _vm._v("Edit")
-            ]),
+            _c(
+              "a",
+              {
+                attrs: { href: "" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.handlingEdit($event)
+                  }
+                }
+              },
+              [_vm._v("Edit")]
+            ),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "User" } } }, [
               _vm._v("back")

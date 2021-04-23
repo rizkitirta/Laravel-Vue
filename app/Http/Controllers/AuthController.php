@@ -76,4 +76,29 @@ class AuthController extends Controller
             'message' => 'Data Berhasil Dihapus'
         ]);
     }
+
+    public function update(Request $request,$id)
+    {
+        $validation = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validation->errors()
+            ], 403);
+        }
+
+        User::where('id',$id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Berhasil Diupdate'
+        ]);
+    }
 }

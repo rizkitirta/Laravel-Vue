@@ -25,3 +25,4 @@ Route::post('/users',[AuthController::class,'store']);
 
 Route::get('/users/{id}',[AuthController::class,'show']);
 Route::delete('/users/{id}',[AuthController::class,'destroy']);
+Route::put('/users/{id}',[AuthController::class,'update']);

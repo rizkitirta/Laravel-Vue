@@ -4,7 +4,8 @@
             <h1>Hello {{ detailUser.name }}.</h1>
             <p>Email : {{ detailUser.email }}</p>
             <a href="" @click.prevent="handlingDelete">Delete</a>
-            <router-link :to="{ name: 'Edit' }">Edit</router-link>
+            <a href="" @click.prevent="handlingEdit">Edit</a>
+            <!-- <router-link :to="{ name: 'Edit' }">Edit</router-link> -->
             <router-link :to="{ name: 'User' }">back</router-link>
         </section>
     </div>
@@ -40,6 +41,12 @@ export default {
             } else {
                 return false;
             }
+        },
+        handlingEdit() {
+            this.$router.push({
+                name: 'Edit',
+                params: {id : this.id}
+            })
         }
     }
 };

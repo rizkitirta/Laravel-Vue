@@ -4,14 +4,14 @@
         <form @submit.prevent="handleUpdate">
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" v-model="form.name" />
+                <input type="text" v-model="user.name" />
                 <div class="error" v-if="errors.name">
                     {{ errors.name[0] }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" v-model="form.email" />
+                <input type="email" v-model="user.email" />
                 <div class="error" v-if="errors.email">
                     {{ errors.email[0] }}
                 </div>
@@ -23,25 +23,25 @@
 
 <script>
 export default {
+    props: ["id"],
     data() {
         return {
-            form: {
+            user: {
                 name: "",
-                email: "",
+                email: ""
             },
             errors: {}
         };
     },
     methods: {
         handleUpdate() {
-            console.log(this.form);
             axios
-                .post("/api/users", this.form)
+                .put("/api/users/" + this.id, this.user)
                 .then(response => {
                     if (response.data.status) {
                         console.log(response);
 
-                        this.$noty.success(response.data.message)
+                        this.$noty.success(response.data.message);
                         this.$router.push({
                             name: "User"
                         });
@@ -49,10 +49,21 @@ export default {
                 })
                 .catch(error => {
                     if (error.response.status) {
-                        this.errors = error.response.data.message
+                        this.errors = error.response.data.message;
                     }
                 });
+        },
+        getUser() {
+            axios.get("/api/users/" + this.id).then(response => {
+                this.user = {
+                    name: response.data.name,
+                    email: response.data.email
+                };
+            });
         }
+    },
+    mounted() {
+        this.getUser();
     }
 };
 </script>
