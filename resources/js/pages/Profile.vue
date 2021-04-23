@@ -4,6 +4,7 @@
             <h1>Hello {{ detailUser.name }}.</h1>
             <p>Email : {{ detailUser.email }}</p>
             <a href="" @click.prevent="handlingDelete">Delete</a>
+            <router-link :to="{ name: 'Edit' }">Edit</router-link>
             <router-link :to="{ name: 'User' }">back</router-link>
         </section>
     </div>
