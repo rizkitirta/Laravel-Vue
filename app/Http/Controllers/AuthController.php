@@ -24,6 +24,12 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+
+        return $user;
     }
 }
