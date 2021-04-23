@@ -1957,9 +1957,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleSubmit: function handleSubmit() {
+      var _this = this;
+
       console.log(this.form);
       axios.post('/api/users', this.form).then(function (response) {
         console.log(response);
+
+        _this.$router.push({
+          name: 'User'
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -38371,7 +38377,6 @@ var render = function() {
     _c(
       "form",
       {
-        attrs: { action: "/users", method: "post" },
         on: {
           submit: function($event) {
             $event.preventDefault()
@@ -38417,7 +38422,7 @@ var render = function() {
                 expression: "form.email"
               }
             ],
-            attrs: { type: "text" },
+            attrs: { type: "email" },
             domProps: { value: _vm.form.email },
             on: {
               input: function($event) {

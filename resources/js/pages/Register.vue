@@ -1,14 +1,14 @@
 <template>
   <div>
       <h1>Register</h1>
-      <form @submit.prevent="handleSubmit" action="/users" method="post">
+      <form @submit.prevent="handleSubmit">
           <div class="form-group">
               <label for="">Name</label>
               <input type="text" v-model="form.name">
           </div>
           <div class="form-group">
               <label for="">Email</label>
-              <input type="text" v-model="form.email">
+              <input type="email" v-model="form.email">
           </div>
           <div class="form-group">
               <label for="">Password</label>
@@ -35,6 +35,9 @@ export default {
             console.log(this.form);
             axios.post('/api/users', this.form).then((response)=> {
                 console.log(response)
+                this.$router.push({
+                    name: 'User',
+                })
             }).catch((error) => {
                 console.log(error)
             })
