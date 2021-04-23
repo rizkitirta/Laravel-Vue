@@ -1976,6 +1976,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["id"],
   data: function data() {
@@ -2126,16 +2127,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['id'],
+  props: ["id"],
   data: function data() {
     return {
-      previewImage: null
+      previewImage: null,
+      photo: null
     };
   },
   methods: {
     upload: function upload(e) {
       var files = e.target.files[0];
       this.previewImage = URL.createObjectURL(files);
+      this.photo = files;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append("photo", this.photo);
+      axios.post("/api/users/photo/" + this.id, formData).then(function (response) {
+        if (response.data.status) {
+          _this.$noty.success(response.data.message);
+
+          _this.$router.push({
+            name: "Profile",
+            params: {
+              id: _this.id
+            }
+          });
+        }
+      });
     }
   }
 });
@@ -38879,6 +38900,15 @@ var render = function() {
       ? _c(
           "section",
           [
+            _vm.detailUser.photo
+              ? _c("img", {
+                  attrs: {
+                    src: "/images/" + _vm.detailUser.photo,
+                    width: "100"
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
             _c("h1", [_vm._v("Hello " + _vm._s(_vm.detailUser.name) + ".")]),
             _vm._v(" "),
             _c("p", [_vm._v("Email : " + _vm._s(_vm.detailUser.email))]),
@@ -39112,7 +39142,9 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("button", { attrs: { type: "submit" } }, [_vm._v("Upload")])
+    _c("button", { attrs: { type: "submit" }, on: { click: _vm.submit } }, [
+      _vm._v("Upload")
+    ])
   ])
 }
 var staticRenderFns = []

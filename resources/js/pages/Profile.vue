@@ -1,6 +1,7 @@
 <template>
     <div>
         <section v-if="id">
+            <img v-if="detailUser.photo" :src="'/images/' + detailUser.photo" width="100">
             <h1>Hello {{ detailUser.name }}.</h1>
             <p>Email : {{ detailUser.email }}</p>
             <a href="" @click.prevent="handlingDelete">Delete</a>

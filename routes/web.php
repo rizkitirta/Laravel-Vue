@@ -25,3 +25,7 @@ Route::get('/{any}', function () {
 Route::get('/{any}/{any2}', function () {
     return view('latihan1');
 });
+
+Route::get('/{any}/{any2}/{any3}', function () {
+    return view('latihan1');
+});
