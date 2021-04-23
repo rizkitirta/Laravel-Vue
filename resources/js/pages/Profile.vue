@@ -6,6 +6,7 @@
             <a href="" @click.prevent="handlingDelete">Delete</a>
             <a href="" @click.prevent="handlingEdit">Edit</a>
             <!-- <router-link :to="{ name: 'Edit' }">Edit</router-link> -->
+            <router-link :to="{ name: 'Upload', params: {id: detailUser.id} }">upload</router-link>
             <router-link :to="{ name: 'User' }">back</router-link>
         </section>
     </div>

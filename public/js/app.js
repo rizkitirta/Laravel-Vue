@@ -1975,6 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["id"],
   data: function data() {
@@ -2096,6 +2097,45 @@ __webpack_require__.r(__webpack_exports__);
           _this.errors = error.response.data.message;
         }
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['id'],
+  data: function data() {
+    return {
+      previewImage: null
+    };
+  },
+  methods: {
+    upload: function upload(e) {
+      var files = e.target.files[0];
+      this.previewImage = URL.createObjectURL(files);
     }
   }
 });
@@ -2270,11 +2310,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Profile_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/Profile.vue */ "./resources/js/pages/Profile.vue");
 /* harmony import */ var _pages_Register_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/Register.vue */ "./resources/js/pages/Register.vue");
 /* harmony import */ var _pages_Edit_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/Edit.vue */ "./resources/js/pages/Edit.vue");
+/* harmony import */ var _pages_UploadPhoto_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/UploadPhoto.vue */ "./resources/js/pages/UploadPhoto.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default); // const Home = require('./pages/Home.vue').default
 // const About = require('./pages/About.vue').default
 // const NotFound = require('./pages/NotFound.vue').default
+
 
 
 
@@ -2305,9 +2347,14 @@ var routes = [{
   component: _pages_Profile_vue__WEBPACK_IMPORTED_MODULE_6__.default,
   props: true
 }, {
+  name: "Upload",
+  path: "/user/:id/photo",
+  component: _pages_UploadPhoto_vue__WEBPACK_IMPORTED_MODULE_9__.default,
+  props: true
+}, {
   name: "Edit",
   path: "/user/:id/edit",
-  component: _pages_Edit_vue__WEBPACK_IMPORTED_MODULE_8__.default,
+  component: _pages_UploadPhoto_vue__WEBPACK_IMPORTED_MODULE_9__.default,
   props: true
 }, {
   path: "*",
@@ -38146,6 +38193,45 @@ component.options.__file = "resources/js/pages/Register.vue"
 
 /***/ }),
 
+/***/ "./resources/js/pages/UploadPhoto.vue":
+/*!********************************************!*\
+  !*** ./resources/js/pages/UploadPhoto.vue ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UploadPhoto.vue?vue&type=template&id=5d00bd90& */ "./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90&");
+/* harmony import */ var _UploadPhoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UploadPhoto.vue?vue&type=script&lang=js& */ "./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _UploadPhoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/UploadPhoto.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/User.vue":
 /*!*************************************!*\
   !*** ./resources/js/pages/User.vue ***!
@@ -38246,6 +38332,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Register.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Register.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UploadPhoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UploadPhoto.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UploadPhoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -38414,6 +38516,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_364a2fac___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_364a2fac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Register.vue?vue&type=template&id=364a2fac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Register.vue?vue&type=template&id=364a2fac&");
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UploadPhoto_vue_vue_type_template_id_5d00bd90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UploadPhoto.vue?vue&type=template&id=5d00bd90& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90&");
 
 
 /***/ }),
@@ -38792,6 +38911,16 @@ var render = function() {
               [_vm._v("Edit")]
             ),
             _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: { name: "Upload", params: { id: _vm.detailUser.id } }
+                }
+              },
+              [_vm._v("upload")]
+            ),
+            _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "User" } } }, [
               _vm._v("back")
             ])
@@ -38946,6 +39075,44 @@ var render = function() {
         _c("button", { attrs: { type: "submit" } }, [_vm._v("Register")])
       ]
     )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UploadPhoto.vue?vue&type=template&id=5d00bd90& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h3", [_vm._v("Upload Photo")]),
+    _vm._v(" "),
+    _c("img", { attrs: { src: _vm.previewImage, width: "80" } }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        attrs: { type: "file", name: "photo" },
+        on: { change: _vm.upload }
+      })
+    ]),
+    _vm._v(" "),
+    _c("button", { attrs: { type: "submit" } }, [_vm._v("Upload")])
   ])
 }
 var staticRenderFns = []
