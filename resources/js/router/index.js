@@ -11,6 +11,7 @@ import About from "../pages/About.vue";
 import NotFound from "../pages/NotFound.vue";
 import User from "../pages/User.vue";
 import Profile from "../pages/Profile.vue";
+import Register from "../pages/Register.vue";
 
 const routes = [
     {
@@ -27,6 +28,11 @@ const routes = [
         name: "User",
         path: "/user",
         component: User,
+    },
+    {
+        name: "Register",
+        path: "/user/create",
+        component: Register,
     },
     {
         name: "Profile",

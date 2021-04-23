@@ -6,6 +6,7 @@
         </section>
         <section v-else>
             <h1>Daftar User</h1>
+            <router-link to="/user/create">Register</router-link>
             <ul>
                 <li v-for="user in users">
                     <!-- <router-link :to="profile_uri(user.name)">{{ user.name }}</router-link> -->

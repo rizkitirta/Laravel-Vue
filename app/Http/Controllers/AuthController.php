@@ -21,4 +21,9 @@ class AuthController extends Controller
 
         return response()->json($user);
     }
+
+    public function store(Request $request)
+    {
+        return $request->all();
+    }
 }
