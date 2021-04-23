@@ -1,10 +1,6 @@
 <template>
     <div>
-        <section v-if="id">
-            <h1>Hello {{ detailUser.name }}.</h1>
-            <router-link :to="{ name: 'User' }">back</router-link>
-        </section>
-        <section v-else>
+        <section>
             <h1>Daftar User</h1>
             <router-link to="/user/create">Register</router-link>
             <ul>
