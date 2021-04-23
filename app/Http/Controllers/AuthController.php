@@ -43,11 +43,11 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => $validation->errors()
-            ],403);
+            ], 403);
         }
 
 
-       $user = User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -63,6 +63,17 @@ class AuthController extends Controller
             'status' => true,
             'message' => 'Data User Berhasil Disimpan',
             'data' => $user
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Berhasil Dihapus'
         ]);
     }
 }

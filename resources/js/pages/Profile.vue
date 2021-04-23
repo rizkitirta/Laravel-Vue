@@ -2,7 +2,8 @@
     <div>
         <section v-if="id">
             <h1>Hello {{ detailUser.name }}.</h1>
-            <p>Email : {{detailUser.email}}</p>
+            <p>Email : {{ detailUser.email }}</p>
+            <a href="" @click.prevent="handlingDelete">Delete</a>
             <router-link :to="{ name: 'User' }">back</router-link>
         </section>
     </div>
@@ -20,10 +21,24 @@ export default {
     },
     methods: {
         getUser() {
-            axios.get('/api/users/' + this.id).then((response) => {
+            axios.get("/api/users/" + this.id).then(response => {
                 console.log(response);
                 this.detailUser = response.data;
             });
+        },
+        handlingDelete() {
+            if (confirm("Apakah Anda Yakin")) {
+                axios.delete("/api/users/" + this.id).then(response => {
+                    if (response.data.status) {
+                        this.$noty.success(response.data.message);
+                        this.$router.push({
+                            name: "User"
+                        });
+                    }
+                });
+            } else {
+                return false;
+            }
         }
     }
 };

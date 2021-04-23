@@ -24,3 +24,4 @@ Route::get('/users',[AuthController::class,'index']);
 Route::post('/users',[AuthController::class,'store']);
 
 Route::get('/users/{id}',[AuthController::class,'show']);
+Route::delete('/users/{id}',[AuthController::class,'destroy']);

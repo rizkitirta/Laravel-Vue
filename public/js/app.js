@@ -1889,6 +1889,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["id"],
   data: function data() {
@@ -1903,10 +1904,27 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser() {
       var _this = this;
 
-      axios.get('/api/users/' + this.id).then(function (response) {
+      axios.get("/api/users/" + this.id).then(function (response) {
         console.log(response);
         _this.detailUser = response.data;
       });
+    },
+    handlingDelete: function handlingDelete() {
+      var _this2 = this;
+
+      if (confirm("Apakah Anda Yakin")) {
+        axios["delete"]("/api/users/" + this.id).then(function (response) {
+          if (response.data.status) {
+            _this2.$noty.success(response.data.message);
+
+            _this2.$router.push({
+              name: "User"
+            });
+          }
+        });
+      } else {
+        return false;
+      }
     }
   }
 });
@@ -38461,6 +38479,20 @@ var render = function() {
             _c("h1", [_vm._v("Hello " + _vm._s(_vm.detailUser.name) + ".")]),
             _vm._v(" "),
             _c("p", [_vm._v("Email : " + _vm._s(_vm.detailUser.email))]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: { href: "" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.handlingDelete($event)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
+            ),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "User" } } }, [
               _vm._v("back")
